@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set up your account</title>
+  <meta name="description" content="A profile setup step in an onboarding flow, with a progress bar and a few basic fields." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="setup-card">
+    <div class="setup-progress">
+      <div class="setup-progress-bar" style="width: 66%"></div>
+    </div>
+    <p class="setup-step">Step 2 of 3</p>
+    <h1>Tell us about you</h1>
+
+    <div class="setup-avatar">
+      <div class="setup-avatar-circle" id="avatarCircle">👤</div>
+      <button type="button" class="setup-avatar-btn">Upload photo</button>
+    </div>
+
+    <label class="setup-label" for="name">Full name</label>
+    <input id="name" type="text" placeholder="Jordan Lee" />
+
+    <label class="setup-label" for="role">What best describes your role?</label>
+    <select id="role">
+      <option>Designer</option>
+      <option>Engineer</option>
+      <option>Product manager</option>
+      <option>Founder</option>
+      <option>Other</option>
+    </select>
+
+    <div class="setup-actions">
+      <button type="button" class="setup-back">Back</button>
+      <button type="button" class="setup-continue">Continue</button>
+    </div>
+  </main>
+</body>
+</html>

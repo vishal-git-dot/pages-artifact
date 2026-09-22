@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eafbf5;
+  color: #0d3b2e;
+  font-family: "Poppins", system-ui, sans-serif;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.tour-card {
+  width: 100%;
+  max-width: 360px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 2.4rem 1.8rem;
+  box-shadow: 0 20px 45px rgba(13, 59, 46, 0.08);
+}
+
+.tour-art {
+  font-size: 2.6rem;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 1.4rem;
+  background: #d6f5e8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tour-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 1.3rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c9ece0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.dot.is-active {
+  background: #12996f;
+  transform: scale(1.2);
+}
+
+.tour-card h1 {
+  font-size: 1.25rem;
+  margin: 0 0 0.6rem;
+}
+
+.tour-card p {
+  color: #3d6f60;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0 0 1.8rem;
+  min-height: 3.2em;
+}
+
+.tour-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tour-skip {
+  background: none;
+  border: none;
+  color: #6f9c8d;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.tour-next {
+  background: #12996f;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.6rem;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.tour-next:hover {
+  background: #0e7d59;
+}

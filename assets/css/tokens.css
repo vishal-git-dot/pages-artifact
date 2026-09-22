@@ -1,0 +1,77 @@
+/*
+  Page Archive — design tokens
+  A catalog aesthetic: cool paper-grey surfaces, confident ink type,
+  and a small set of index-tab colors marking each category.
+*/
+
+:root {
+  /* Surfaces */
+  --paper: #f2f2ef;
+  --card: #fbfbf9;
+  --ink: #15171a;
+  --line: rgba(21, 23, 26, 0.12);
+  --line-strong: rgba(21, 23, 26, 0.28);
+
+  /* Text */
+  --muted: #5c5f66;
+  --faint: #8b8e94;
+
+  /* Accent */
+  --accent: #2954ff;
+  --accent-ink: #0c1440;
+
+  /* Category tab colors */
+  --cat-feedback-pages: #2954ff;
+  --cat-landing-pages: #e8623d;
+  --cat-empty-states: #1f8a5f;
+  --cat-onboarding: #8452e0;
+
+  /* Type */
+  --font: "Archivo", system-ui, sans-serif;
+
+  /* Rhythm */
+  --radius: 10px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

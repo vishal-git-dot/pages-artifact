@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How was your order?</title>
+  <meta name="description" content="A friendly post-purchase survey with a star rating and an optional comment field." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="survey-card">
+    <div class="survey-icon">📦</div>
+    <h1>How was your order?</h1>
+    <p class="survey-sub">Order #48213 — delivered September 14</p>
+
+    <div class="star-rating" id="starRating" role="radiogroup" aria-label="Rate your order">
+      <button type="button" class="star" data-value="1" aria-label="1 star">★</button>
+      <button type="button" class="star" data-value="2" aria-label="2 stars">★</button>
+      <button type="button" class="star" data-value="3" aria-label="3 stars">★</button>
+      <button type="button" class="star" data-value="4" aria-label="4 stars">★</button>
+      <button type="button" class="star" data-value="5" aria-label="5 stars">★</button>
+    </div>
+
+    <label class="field-label" for="comment">Anything you'd like to add? (optional)</label>
+    <textarea id="comment" class="survey-textarea" rows="3" placeholder="Tell us more…"></textarea>
+
+    <button type="button" class="survey-submit" id="submitBtn">Submit feedback</button>
+    <p class="survey-skip"><a href="#">Skip for now</a></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

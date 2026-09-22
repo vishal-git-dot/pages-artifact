@@ -1,0 +1,189 @@
+#!/usr/bin/env node
+/**
+ * Page Archive — generator
+ * ------------------------
+ * Run by CI on every push (and locally via `npm run generate`).
+ *
+ * 1. Scans pages/<category>/<page-id>/ for index.html files.
+ * 2. Validates the shape strictly — a malformed folder fails the
+ *    build with a clear message instead of being silently skipped.
+ * 3. Pulls title + description straight from each page's own
+ *    <title> / <meta name="description"> — no registry file to edit.
+ * 4. Screenshots each page with Playwright (fixed viewport, no
+ *    local server needed — Playwright navigates file:// URLs
+ *    directly) and saves a thumbnail next to the page.
+ * 5. Writes data/pages.js as a plain global array, loaded via
+ *    <script src="data/pages.js"> — not fetch() — so the gallery
+ *    never depends on an async request that can fail.
+ *
+ * Nothing here is committed back to git by CI. The deployed site
+ * is built fresh from whatever is in pages/ on every run.
+ */
+
+const fs = require("fs");
+const path = require("path");
+const { chromium } = require("playwright");
+
+const ROOT = path.join(__dirname, "..");
+const PAGES_DIR = path.join(ROOT, "pages");
+const DATA_FILE = path.join(ROOT, "data", "pages.js");
+
+const VIEWPORT = { width: 1280, height: 800 };
+const THUMB_NAME = "thumbnail.png";
+
+function kebabToTitle(str) {
+  return str
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+function extractTag(html, regex) {
+  const match = html.match(regex);
+  return match ? match[1].trim() : "";
+}
+
+/**
+ * Scans pages/ and returns a validated list of
+ * { id, category, categoryLabel, title, description, dir, path }.
+ * Throws with a clear message on any structural problem — this
+ * script fails loudly rather than silently dropping a page.
+ */
+function scanPages() {
+  if (!fs.existsSync(PAGES_DIR)) {
+    throw new Error(`Expected a "pages" directory at ${PAGES_DIR}`);
+  }
+
+  const categories = fs
+    .readdirSync(PAGES_DIR)
+    .filter((name) => fs.statSync(path.join(PAGES_DIR, name)).isDirectory());
+
+  const results = [];
+
+  for (const category of categories) {
+    const categoryDir = path.join(PAGES_DIR, category);
+    const pageIds = fs
+      .readdirSync(categoryDir)
+      .filter((name) => fs.statSync(path.join(categoryDir, name)).isDirectory());
+
+    for (const id of pageIds) {
+      const pageDir = path.join(categoryDir, id);
+      const indexPath = path.join(pageDir, "index.html");
+      const relDir = path.relative(ROOT, pageDir).split(path.sep).join("/");
+
+      if (!fs.existsSync(indexPath)) {
+        throw new Error(
+          `"${relDir}" has no index.html.\n` +
+            `Every page needs pages/<category>/<page-id>/index.html — ` +
+            `if this folder isn't meant to be a page, move or remove it.`
+        );
+      }
+
+      const html = fs.readFileSync(indexPath, "utf-8");
+      const title = extractTag(html, /<title>([^<]*)<\/title>/i);
+      const description = extractTag(
+        html,
+        /<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i
+      );
+
+      if (!title) {
+        throw new Error(
+          `"${relDir}/index.html" has no <title> — the gallery needs ` +
+            `one to show a card for this page. Add a <title> and re-run.`
+        );
+      }
+
+      if (!description) {
+        console.warn(
+          `⚠  "${relDir}" has no <meta name="description">. ` +
+            `Its card will show without one — consider adding it.`
+        );
+      }
+
+      results.push({
+        id,
+        category,
+        categoryLabel: kebabToTitle(category),
+        title,
+        description,
+        dir: pageDir,
+        path: `pages/${category}/${id}/`,
+        thumbnail: `pages/${category}/${id}/${THUMB_NAME}`,
+      });
+    }
+  }
+
+  return results;
+}
+
+async function screenshotAll(pages) {
+  const browser = await chromium.launch();
+  const context = await browser.newContext({ viewport: VIEWPORT });
+  const page = await context.newPage();
+
+  for (const entry of pages) {
+    const fileUrl = "file://" + path.join(entry.dir, "index.html");
+    await page.goto(fileUrl, { waitUntil: "networkidle" });
+    await page.screenshot({
+      path: path.join(entry.dir, THUMB_NAME),
+      // fixed viewport crop, not full-page — keeps every card the
+      // same aspect ratio and keeps generation fast
+      fullPage: false,
+    });
+    console.log(`✓ captured ${entry.path}`);
+  }
+
+  await context.close();
+  await browser.close();
+}
+
+function writeDataFile(pages) {
+  const categoryOrder = [];
+  const seen = new Set();
+  for (const p of pages) {
+    if (!seen.has(p.category)) {
+      seen.add(p.category);
+      categoryOrder.push({ id: p.category, label: p.categoryLabel });
+    }
+  }
+
+  const pagesOut = pages.map(({ id, category, title, description, path: p, thumbnail }) => ({
+    id,
+    category,
+    title,
+    description,
+    path: p,
+    thumbnail,
+  }));
+
+  const contents =
+    `/* AUTO-GENERATED by scripts/generate.js — do not hand-edit.\n` +
+    ` * Regenerated on every build from the pages/ folder. */\n\n` +
+    `const PAGES = ${JSON.stringify(pagesOut, null, 2)};\n\n` +
+    `const CATEGORIES = ${JSON.stringify(categoryOrder, null, 2)};\n`;
+
+  fs.mkdirSync(path.dirname(DATA_FILE), { recursive: true });
+  fs.writeFileSync(DATA_FILE, contents);
+  console.log(`✓ wrote data/pages.js (${pagesOut.length} pages, ${categoryOrder.length} categories)`);
+}
+
+async function main() {
+  const pages = scanPages();
+
+  if (pages.length === 0) {
+    console.warn("⚠  No pages found under pages/ — the gallery will be empty.");
+  }
+
+  await screenshotAll(pages);
+  writeDataFile(pages);
+}
+
+if (require.main === module) {
+  main().catch((err) => {
+    console.error("\n✗ generate.js failed:\n");
+    console.error(err.message);
+    process.exit(1);
+  });
+}
+
+module.exports = { scanPages, writeDataFile, kebabToTitle };

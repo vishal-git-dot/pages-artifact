@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Archive — a self-updating catalog of page examples</title>
+  <meta
+    name="description"
+    content="A gallery of full page examples — feedback pages, landing pages, empty states, onboarding — with screenshots generated automatically on every push."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <span class="brand-mark"></span>
+      Page Archive
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#gallery">Gallery</a>
+      <a href="#add-yours">Add a page</a>
+    </nav>
+    <span class="header-count" id="headerCount">— pages</span>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div>
+        <h1>Every page you've built, cataloged automatically.</h1>
+        <p>
+          Feedback pages, landing pages, empty states, onboarding
+          flows — drop a folder in, push, and a real screenshot,
+          title, and category show up on their own. Nothing to edit
+          by hand.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#gallery">Browse the catalog</a>
+          <a class="btn" href="#add-yours">Add a page</a>
+        </div>
+      </div>
+
+      <div class="hero-fan" aria-hidden="true">
+        <figure class="hero-fan-card">
+          <img src="pages/feedback-pages/post-purchase-survey/thumbnail.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <figcaption>Post-Purchase Survey</figcaption>
+        </figure>
+        <figure class="hero-fan-card">
+          <img src="pages/landing-pages/product-launch/thumbnail.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <figcaption>Product Launch</figcaption>
+        </figure>
+        <figure class="hero-fan-card">
+          <img src="pages/onboarding/welcome-tour/thumbnail.png" alt="" loading="lazy" onerror="this.style.display='none'" />
+          <figcaption>Welcome Tour</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="filter-bar">
+      <div class="filter-tabs" id="filterTabs" role="tablist" aria-label="Filter by category"></div>
+      <div class="search-field">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search pages…"
+          aria-label="Search pages"
+        />
+      </div>
+    </div>
+
+    <section class="gallery" id="gallery"></section>
+
+    <section id="add-yours" class="gallery" style="padding-top: 0;">
+      <div class="section-heading">
+        <h2>Add a page</h2>
+      </div>
+      <ol style="color: var(--muted); line-height: 1.9; max-width: 62ch; padding-left: 1.2rem;">
+        <li>Create <code>pages/&lt;category&gt;/&lt;page-id&gt;/index.html</code> — reuse an existing category folder, or start a new one; it'll show up as its own section automatically.</li>
+        <li>Give it a real <code>&lt;title&gt;</code> and a <code>&lt;meta name="description"&gt;</code> — that's exactly what the gallery card will show.</li>
+        <li>Push to <code>main</code>. CI screenshots the page, regenerates the catalog, and deploys — nothing to run yourself, nothing to edit.</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>Page Archive — screenshots generated automatically on every push.</span>
+    <a href="README.md">Read the README</a>
+  </footer>
+
+  <script src="data/pages.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

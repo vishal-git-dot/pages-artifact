@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report a bug</title>
+  <meta name="description" content="A developer-facing bug report form with severity, steps to reproduce, and environment fields." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="bug-form">
+    <header class="bug-header">
+      <span class="bug-tag">ISSUE-NEW</span>
+      <h1>Report a bug</h1>
+      <p>Give us enough detail to reproduce it — the more specific, the faster it gets fixed.</p>
+    </header>
+
+    <div class="field-row">
+      <label for="title">Title</label>
+      <input id="title" type="text" placeholder="Export button does nothing on Safari" />
+    </div>
+
+    <div class="field-row field-row-split">
+      <div>
+        <label for="severity">Severity</label>
+        <select id="severity">
+          <option>Low</option>
+          <option selected>Medium</option>
+          <option>High</option>
+          <option>Critical</option>
+        </select>
+      </div>
+      <div>
+        <label for="env">Environment</label>
+        <input id="env" type="text" placeholder="macOS 15, Safari 18" />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <label for="steps">Steps to reproduce</label>
+      <textarea id="steps" rows="4" placeholder="1. Go to Settings&#10;2. Click Export&#10;3. Nothing happens"></textarea>
+    </div>
+
+    <div class="field-row">
+      <label for="expected">Expected vs. actual</label>
+      <textarea id="expected" rows="3" placeholder="Expected: file downloads. Actual: no response, no console error."></textarea>
+    </div>
+
+    <div class="bug-actions">
+      <button type="button" class="btn-ghost">Save draft</button>
+      <button type="button" class="btn-primary" id="submitBug">Submit report</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

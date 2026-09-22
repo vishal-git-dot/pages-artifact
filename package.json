@@ -1,0 +1,12 @@
+{
+  "name": "page-archive",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A self-updating gallery of full page examples, with auto-generated screenshots.",
+  "scripts": {
+    "generate": "node scripts/generate.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

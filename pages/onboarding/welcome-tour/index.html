@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Fieldnote</title>
+  <meta name="description" content="A step-based welcome tour for first-time users, with progress dots and a next button." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="tour-card">
+    <div class="tour-art" id="tourArt">🗒️</div>
+
+    <div class="tour-dots" id="tourDots">
+      <span class="dot is-active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <h1 id="tourTitle">Capture notes anywhere</h1>
+    <p id="tourBody">Jot down a thought on your phone, and it's on your desktop before you sit back down.</p>
+
+    <div class="tour-actions">
+      <button class="tour-skip" id="skipBtn">Skip</button>
+      <button class="tour-next" id="nextBtn">Next</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

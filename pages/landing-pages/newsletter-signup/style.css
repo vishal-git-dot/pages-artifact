@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbfaf7;
+  color: #211f1c;
+  font-family: "Inter", system-ui, sans-serif;
+  padding: 2rem 1.5rem;
+}
+
+.letter-wrap {
+  max-width: 440px;
+  text-align: center;
+}
+
+.letter-kicker {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: #857f74;
+  margin: 0 0 0.6rem;
+}
+
+.letter-wrap h1 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.letter-sub {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #57534a;
+  margin: 0 0 2rem;
+}
+
+.letter-form {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.letter-form input {
+  flex: 1;
+  border: 1px solid #d8d3c8;
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+  font-size: 0.92rem;
+  background: #fff;
+}
+
+.letter-form input:focus {
+  outline: 2px solid #211f1c;
+  outline-offset: 1px;
+}
+
+.letter-form button {
+  background: #211f1c;
+  color: #fbfaf7;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.3rem;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.letter-form button:hover {
+  background: #3a362f;
+}
+
+.letter-note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #9a948a;
+}
