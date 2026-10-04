@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — Nintendo 2001 Style</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="masthead">
+      <div class="welcome-wrap">
+        <div class="mascot-placeholder" aria-hidden="true">
+          <span class="pixel-star">★</span>
+          <span class="pixel-face">:)</span>
+        </div>
+        <div class="speech-bubble">Welcome to the next big thing!</div>
+      </div>
+
+      <form class="search" id="searchForm">
+        <label for="searchInput">SEARCH</label>
+        <input id="searchInput" type="text" placeholder="Enter keyword...">
+        <select aria-label="Search category">
+          <option>ALL</option>
+          <option>NEWS</option>
+          <option>GAMES</option>
+          <option>SYSTEMS</option>
+        </select>
+        <button type="submit" class="amber-button">GO</button>
+      </form>
+    </header>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <div class="logo-pill">NINTENDO</div>
+      <a href="#coming">GAMES</a>
+      <a href="#coming">SYSTEMS</a>
+      <a href="#coming">NEWS</a>
+      <a href="#coming">NSIDER</a>
+      <a href="#coming">DOWNLOADS</a>
+      <button class="utility-chip" data-scroll="#notify">CODE BANK</button>
+      <button class="utility-chip" data-scroll="#notify">GAME FINDER</button>
+    </nav>
+
+    <nav class="secondary-nav" aria-label="Utility navigation">
+      <a href="#coming">PARENTS</a>
+      <a href="#coming">CUSTOMER SERVICE</a>
+      <a href="#coming">CORPORATE</a>
+      <a href="#coming">GLOBAL</a>
+      <a href="#coming">PRIVACY</a>
+      <a href="#coming">STORE</a>
+      <a href="#coming">CONTACT</a>
+    </nav>
+
+    <main>
+      <section class="hero chamfer" id="coming">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">OFFICIAL SITE UPDATE</div>
+            <h1>COMING<br><span>SOON!</span></h1>
+            <p class="hero-tagline">
+              Something new is powering up.<br>
+              Check back soon for the full experience.
+            </p>
+            <button class="round-arrow" id="heroArrow" aria-label="Scroll to notification form">›</button>
+          </div>
+          <div class="console-art" aria-hidden="true">
+            <div class="screen">
+              <div class="screen-glow">LOADING</div>
+              <div class="loading-bar"><span id="loadingBar"></span></div>
+            </div>
+            <div class="console-body"></div>
+            <div class="controller controller-a"></div>
+            <div class="controller controller-b"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="content-layout">
+        <aside class="left-rail" aria-label="More sections">
+          <a href="#news">TOP TEN</a>
+          <a href="#news">TOP RENTALS</a>
+          <a href="#notify">PLAYER'S CHOICE</a>
+          <a href="#footer">ESRB RATINGS</a>
+        </aside>
+
+        <section class="content-column">
+          <article class="plate" id="news">
+            <div class="section-label"><span>▦</span> OFFICIAL NEWS</div>
+            <div class="news-row">
+              <div><b>NEW EXPERIENCE LOADING</b><small>We're putting the finishing touches on something special.</small></div>
+              <span class="arrow-chip">›</span>
+            </div>
+            <div class="news-row">
+              <div><b>POWER-UP COMPLETE</b><small>The new site is being tuned for maximum fun and minimum waiting.</small></div>
+              <span class="arrow-chip">›</span>
+            </div>
+            <div class="news-row">
+              <div><b>STAY IN THE LOOP</b><small>Sign up below and we'll let you know when the doors open.</small></div>
+              <span class="arrow-chip">›</span>
+            </div>
+          </article>
+
+          <article class="plate" id="notify">
+            <div class="section-label"><span>▦</span> PLAYER'S POLL</div>
+            <div class="poll-panel">
+              <div class="poll-question">WHAT ARE YOU MOST EXCITED TO SEE?</div>
+              <label><input type="radio" name="choice" value="games"> New games</label>
+              <label><input type="radio" name="choice" value="systems"> New systems</label>
+              <label><input type="radio" name="choice" value="news"> Fresh news</label>
+              <label><input type="radio" name="choice" value="everything"> EVERYTHING!</label>
+              <button class="submit-button" id="pollButton">SUBMIT</button>
+              <p class="status" id="pollStatus"></p>
+            </div>
+          </article>
+
+          <article class="plate signup-panel">
+            <div class="section-label"><span>▦</span> GET THE FIRST WORD</div>
+            <div class="signup-content">
+              <div>
+                <h2>BE READY WHEN IT'S GO TIME.</h2>
+                <p>Enter your e-mail address and we'll send you a notification when the new experience launches.</p>
+              </div>
+              <form id="signupForm" class="signup-form">
+                <label for="email">E-MAIL</label>
+                <input id="email" type="email" required placeholder="you@example.com">
+                <button class="submit-button" type="submit">SUBMIT</button>
+                <p class="status" id="signupStatus"></p>
+              </form>
+            </div>
+          </article>
+        </section>
+
+        <aside class="right-rail">
+          <button class="rail-button" data-scroll="#notify">◉ LOGIN</button>
+          <button class="rail-button" data-scroll="#notify">★ SUBSCRIBE</button>
+          <button class="rail-button" data-scroll="#notify">✉ NEWSLETTER</button>
+          <button class="rail-button" data-scroll="#footer">? HELP</button>
+
+          <div class="info-box">
+            <div class="info-tab">WHAT IS — COMING SOON?</div>
+            <p>This is the staging area for our next major launch. The controls are online, the lights are on, and the final level is almost ready.</p>
+          </div>
+
+          <div class="promo-card">
+            <div class="promo-word">POWER<br>UP!</div>
+            <div class="mini-console">+</div>
+            <small>GET READY FOR<br>THE NEXT LEVEL</small>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="privacy-badge">ESRB — PRIVACY CERTIFIED</div>
+      <span>© 2001–2026 YOUR COMPANY. ALL RIGHTS RESERVED.</span>
+      <a href="#coming">PRIVACY</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
