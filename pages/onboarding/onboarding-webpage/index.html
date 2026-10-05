@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onboarding — Discover better workflows.</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="onboarding-shell">
+    <header class="nav-wrap">
+      <nav class="nav-pill" aria-label="Primary navigation">
+        <a class="brand" href="#" aria-label="Home">
+          <span class="brand-mark">m</span>
+          <span class="brand-name">mobbin</span>
+        </a>
+        <div class="nav-links">
+          <a href="#">Explore</a>
+          <a href="#">Collections</a>
+          <a href="#">Pricing</a>
+        </div>
+        <button class="button button-primary nav-cta" id="navCta">Get started</button>
+      </nav>
+    </header>
+
+    <section class="progress-area">
+      <div class="progress-meta">
+        <span id="stepLabel">Step 1 of 4</span>
+        <span id="progressPercent">25%</span>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" id="eyebrow">Welcome.</p>
+        <h1 id="title">Discover better product inspiration.</h1>
+        <p class="subtitle" id="subtitle">
+          Set up your experience in a few simple steps.
+        </p>
+      </div>
+
+      <div class="step-card" id="stepCard">
+        <div id="stepContent"></div>
+      </div>
+
+      <div class="actions">
+        <button class="button button-outline" id="backBtn" type="button">Back</button>
+        <button class="button button-primary" id="nextBtn" type="button">Continue</button>
+      </div>
+
+      <p class="fine-print" id="finePrint">You can change these choices later.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">mobbin.</div>
+        <p>Real-world product inspiration, without the noise.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
