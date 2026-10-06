@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="error-card" aria-labelledby="error-title">
+      <div class="error-code" aria-hidden="true">404</div>
+
+      <div class="content">
+        <p class="eyebrow">ERROR 404</p>
+        <h1 id="error-title">Page not found</h1>
+        <p class="message">
+          We couldn't find the page you're looking for. It may have been moved,
+          removed, or the link might be incorrect.
+        </p>
+
+        <div class="actions">
+          <button class="primary-button" id="homeButton" type="button">
+            <span class="play-icon" aria-hidden="true">▶</span>
+            Go Home
+          </button>
+          <button class="secondary-button" id="backButton" type="button">
+            Go Back
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
