@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <title>Feedback | Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=IBM+Plex+Mono:wght@400&family=Saira+Condensed:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="image/favicon.svg">
+</head>
+<body>
+  <header class="top-nav" aria-label="Main navigation">
+    <a class="nav-link menu-link" href="#feedback-form">MENU</a>
+    <a class="wordmark" href="#" aria-label="Social home">SOCIAL</a>
+    <a class="nav-link store-link" href="#footer">COMMUNITY</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-image" role="img" aria-label="Dramatic monochrome photograph of a modern sports car"></div>
+      <div class="hero-content">
+        <p class="eyebrow">YOUR VOICE. OUR COMMUNITY.</p>
+        <h1 id="hero-title">SHAPE THE<br>EXPERIENCE</h1>
+        <p class="hero-copy">Every perspective matters. Tell us what works, what could be better, and how we can make this community more meaningful.</p>
+        <a class="pill-button" href="#feedback-form">SHARE FEEDBACK</a>
+      </div>
+      <p class="photo-caption">COMMUNITY FEEDBACK / 01</p>
+    </section>
+
+    <section class="feedback-section" id="feedback-form">
+      <div class="section-intro">
+        <p class="eyebrow">WE’RE LISTENING</p>
+        <h2>MAKE YOUR<br>VOICE HEARD</h2>
+        <p class="intro-copy">Your feedback helps us improve the way people connect, share, and discover. You can send it anonymously if you prefer.</p>
+      </div>
+
+      <form id="feedbackForm" novalidate>
+        <div class="form-row">
+          <label for="category">FEEDBACK CATEGORY <span aria-hidden="true">*</span></label>
+          <select id="category" name="category" required>
+            <option value="" selected disabled>Select a category</option>
+            <option value="user-experience">User experience</option>
+            <option value="content">Posts and content</option>
+            <option value="privacy">Privacy and safety</option>
+            <option value="features">Features and suggestions</option>
+            <option value="community">Community and moderation</option>
+            <option value="other">Other</option>
+          </select>
+          <small class="field-error" id="categoryError"></small>
+        </div>
+
+        <fieldset class="rating-field">
+          <legend>HOW WOULD YOU RATE YOUR EXPERIENCE? <span aria-hidden="true">*</span></legend>
+          <div class="rating-options" role="radiogroup" aria-label="Experience rating">
+            <button class="rating-option" type="button" data-rating="1" aria-pressed="false">1</button>
+            <button class="rating-option" type="button" data-rating="2" aria-pressed="false">2</button>
+            <button class="rating-option" type="button" data-rating="3" aria-pressed="false">3</button>
+            <button class="rating-option" type="button" data-rating="4" aria-pressed="false">4</button>
+            <button class="rating-option" type="button" data-rating="5" aria-pressed="false">5</button>
+          </div>
+          <div class="rating-labels"><span>NEEDS WORK</span><span>EXCELLENT</span></div>
+          <input type="hidden" name="rating" id="rating" value="">
+          <small class="field-error" id="ratingError"></small>
+        </fieldset>
+
+        <div class="form-row">
+          <label for="comments">YOUR FEEDBACK <span aria-hidden="true">*</span></label>
+          <textarea id="comments" name="comments" rows="5" maxlength="1000" placeholder="Tell us about your experience…" required></textarea>
+          <div class="field-meta"><small>Be honest. Be constructive.</small><small><span id="charCount">0</span> / 1000</small></div>
+          <small class="field-error" id="commentsError"></small>
+        </div>
+
+        <div class="form-row optional-fields" id="identityFields">
+          <label for="displayName">DISPLAY NAME <span class="optional">(OPTIONAL)</span></label>
+          <input id="displayName" name="displayName" type="text" maxlength="60" placeholder="How should we identify you?">
+        </div>
+
+        <label class="anonymous-toggle" for="anonymous">
+          <input id="anonymous" name="anonymous" type="checkbox" checked>
+          <span class="custom-check" aria-hidden="true"></span>
+          <span class="anonymous-text"><span class="toggle-title">SUBMIT ANONYMOUSLY</span><span class="toggle-description">Your name won’t be attached to this feedback.</span></span>
+        </label>
+
+        <p class="privacy-note">Please avoid sharing passwords or other sensitive personal information. Read our <a href="#privacy">privacy note</a>.</p>
+        <button class="pill-button submit-button" type="submit">SUBMIT FEEDBACK <span aria-hidden="true">→</span></button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="closing-band">
+      <p class="eyebrow">BETTER TOGETHER</p>
+      <h2>LISTEN. LEARN.<br>MOVE FORWARD.</h2>
+      <p>Your words can help shape what comes next.</p>
+      <a class="pill-button" href="#feedback-form">SEND YOUR THOUGHTS</a>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="footer-top">
+      <a class="wordmark footer-wordmark" href="#">SOCIAL</a>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#feedback-form">FEEDBACK</a>
+        <a href="#privacy">PRIVACY</a>
+        <a href="#footer">COMMUNITY</a>
+        <a href="#footer">HELP</a>
+      </nav>
+    </div>
+    <p id="privacy" class="privacy-footer">Feedback is used to understand community needs and improve the experience. This demo stores submissions only in your current browser session.</p>
+    <div class="footer-bottom"><span>© 2026 SOCIAL COMMUNITY</span><span>MADE TO LISTEN</span></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
